@@ -49,6 +49,6 @@ define('BUILD_SNIPPET_STATIC', false);
 define('BUILD_PLUGIN_STATIC', false);
 
 $BUILD_RESOLVERS = array(
-	'chunks',
 	'setup',
+	'chunks',
 );
