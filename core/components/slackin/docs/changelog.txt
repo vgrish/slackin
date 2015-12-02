@@ -1,5 +1,9 @@
 Changelog for slackin.
 
+1.0.1-beta
+==============
+- fix setup
+
 1.0.0-beta
 ==============
 - initial

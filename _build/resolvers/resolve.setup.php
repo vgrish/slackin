@@ -2,11 +2,12 @@
 
 /*---------------------------------*/
 if (!function_exists('installPackage')) {
-	function installPackage($packageName) {
+	function installPackage($packageName)
+	{
 		global $modx;
 
 		/* @var modTransportProvider $provider */
-		if (!$provider = $modx->getObject('transport.modTransportProvider', array('service_url:LIKE' => '%rstore.pro%', 'OR:service_url:LIKE' => '%modstore.pro%'))) {
+		if (!$provider = $modx->getObject('transport.modTransportProvider', array('service_url:LIKE' => '%rstore.pro%'))) {
 			$provider = $modx->getObject('transport.modTransportProvider', 1);
 		}
 
@@ -56,8 +57,7 @@ if (!function_exists('installPackage')) {
 						if (is_array($r) && !empty($r)) {
 							$package->set('release', $r[0]);
 							$package->set('release_index', (isset($r[1]) ? $r[1] : '0'));
-						}
-						else {
+						} else {
 							$package->set('release', $sig[2]);
 						}
 					}
@@ -67,8 +67,7 @@ if (!function_exists('installPackage')) {
 							'success' => 1,
 							'message' => "<b>{$packageName}</b> was successfully installed",
 						);
-					}
-					else {
+					} else {
 						return array(
 							'success' => 0,
 							'message' => "Could not save package <b>{$packageName}</b>",
@@ -77,8 +76,7 @@ if (!function_exists('installPackage')) {
 					break;
 				}
 			}
-		}
-		else {
+		} else {
 			return array(
 				'success' => 0,
 				'message' => "Could not find <b>{$packageName}</b> in MODX repository",
@@ -89,11 +87,11 @@ if (!function_exists('installPackage')) {
 }
 
 if (!function_exists('downloadPackage')) {
-	function downloadPackage($src, $dst) {
+	function downloadPackage($src, $dst)
+	{
 		if (ini_get('allow_url_fopen')) {
 			$file = @file_get_contents($src);
-		}
-		else {
+		} else {
 			if (function_exists('curl_init')) {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $src);
@@ -108,8 +106,7 @@ if (!function_exists('downloadPackage')) {
 
 				$file = curl_exec($ch);
 				curl_close($ch);
-			}
-			else {
+			} else {
 				return false;
 			}
 		}
